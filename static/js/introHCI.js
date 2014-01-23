@@ -9,6 +9,7 @@ $(document).ready(function() {
  * Function that is called when the document is ready.
  */
 function initializePage() {
+	$('.project-description').hide();
 	$("#testjs").click(function(e) {
 		$('.jumbotron h1').text("Javascript is connected");
 		$('#testjs').text("Omaha!");
@@ -43,10 +44,9 @@ function projectClick(e) { 
 
        var containingProject = $(this).closest(".project"); 
     var description = $(containingProject).find(".project-description");
-    if (description.length == 0) { 
-       $(containingProject).append("<div class='project-description'><p>Description of the project.</p></div>"); 
-    } else { 
+    if (description.is(":visible")) { 
        description.fadeOut();
-       description.remove();
+    } else { 
+       description.fadeIn();
     }
 }
